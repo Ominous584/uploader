@@ -38,15 +38,13 @@ const app = initializeApp(firebaseConfig);
 const storage = getStorage();
 const db = getDatabase(app);
 
-
-
-export default function Home() {
-  console.log("window is defined")
+const Post = () => {
+  const router = useRouter()
+  const { pid } = router.query
   if (typeof window !== "undefined") {
     console.log("window is defined")
     
-      const router = useRouter()
-      const { pid } = router.query
+      
       console.log("window is defined")
       console.log(pid)
       if (pid == undefined) {} else {
@@ -145,4 +143,8 @@ export default function Home() {
         </div>
     </main>
   )
+
+  
 }
+
+export default Post 
