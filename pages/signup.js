@@ -66,7 +66,7 @@ const myLoader = ({ src, width, quality }) => {
     return `https://example.com/${src}?w=${width}&q=${quality || 75}`
   }
 
-export default function articles(){
+export default function useArticles(){
     const [showMe, setShowMe] = useState(false);
     function toggle(){
         setShowMe(!showMe);

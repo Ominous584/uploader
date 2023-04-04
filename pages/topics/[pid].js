@@ -50,13 +50,16 @@ const app = initializeApp(firebaseConfig);
 const storage = getStorage();
 const db = getDatabase(app);
 
+function useRouer(){
+  const router = useRouter()
+  const { pid } = router.query
+}
 
 export default function Home() {
     if (typeof window !== "undefined") {
         console.log("window is defined")
         
-          const router = useRouter()
-          const { pid } = router.query
+          
           console.log("window is defined")
           console.log(pid)}
 
