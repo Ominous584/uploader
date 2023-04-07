@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import { Inter } from 'next/font/google'
+
 //import styles from '@/styles/globals.css'
 
 import Script from 'next/script'
@@ -12,7 +12,7 @@ import { VscAccount } from "react-icons/vsc";
 import { CiLogout, CiSettings, CiUser } from "react-icons/ci";
 import { BiTrendingUp } from "react-icons/bi";
 import { SlLike } from "react-icons/sl";
-const inter = Inter({ subsets: ['latin'] })
+
 
 
 

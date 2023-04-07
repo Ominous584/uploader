@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import { Inter } from 'next/font/google'
+
 //import styles from '@/styles/globals.css'
 import styles from '@/styles/Home.module.css'
 import Script from 'next/script'
@@ -12,7 +12,7 @@ import Link from 'next/link';
 import { RxHamburgerMenu, RxWidth } from 'react-icons/rx';
 import { VscAccount } from "react-icons/vsc";
 import { CiLogout, CiSettings, CiUser } from "react-icons/ci";
-const inter = Inter({ subsets: ['latin'] })
+
 // Import the functions you need from the SDKs you need
 import  {initializeApp}  from 'firebase/app';
 import { getDatabase, ref, onValue, get, child, orderByChild, query, limitToLast } from "firebase/database";

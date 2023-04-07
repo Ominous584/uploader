@@ -1,0 +1,8 @@
+{
+    "appService.defaultWebAppToDeploy": "undefined/subscriptions/81e37cbc-d13a-4144-933e-de19a39cf454/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/dysonos1",
+    "appService.deploySubpath": ".",
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ]
+}
