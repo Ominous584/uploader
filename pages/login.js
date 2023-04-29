@@ -44,10 +44,12 @@ if (typeof window !== "undefined") {
 
  sub.addEventListener('click', sign);
  function sign(){
-    var username = document.getElementById("user").value;
+  var username = document.getElementById("user").value;
   var rf = ref(db, "People/" + username)
+  console.log(username)
   console.log("clicked!")
-  var nae = document.getElementById("user").value;
+  var nae = document.getElementById('usera').value;
+  console.log(nae)
   var pass = document.getElementById("pass").value;
   onValue(rf, (snapshot) => {
     
@@ -129,7 +131,7 @@ export default function useArticles(){
           </div>
         <div className='contain'>
         <h1 className='login'>Login</h1>
-        <input type='text' placeholder='Username' className='input' id='user'/>
+        <input type='text' placeholder='Username' className='input' id='usera'/>
         <input type='password' placeholder='Password' className='input' id='pass'/>
         <button className='buttonlog' id='log'>Login</button>
         <p className='dont'>Don't have an account? <Link href='signup' className='link'>Sign up</Link></p>

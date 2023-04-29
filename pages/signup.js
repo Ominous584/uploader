@@ -38,6 +38,7 @@ if (typeof window !== "undefined") {
     window.addEventListener('DOMContentLoaded', (event) => {
     console.log("window is defined")
     document.getElementById("signup").onclick = function(){
+      console.log("clicked signup!")
     var name = document.getElementById("name").value;
     var email = document.getElementById("email").value;
     var pass = document.getElementById("password").value;

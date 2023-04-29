@@ -47,8 +47,8 @@ const storage = getStorage();
 
 
 const list = [];
-const mostViewedPosts = query(ref(db, "posted"), orderByChild('timestamp'));
-const mostViewedPosts1 = query(ref(db, "posted"), orderByChild('views/views', 'desc'));
+const mostViewedPosts = query(ref(db, "articles"), orderByChild('timestamp'));
+const mostViewedPosts1 = query(ref(db, "articles"), orderByChild('views/views', 'desc'));
 console.log(mostViewedPosts)
 console.log(mostViewedPosts1)
 get(mostViewedPosts).then((snapshot) => {
@@ -109,7 +109,7 @@ get(mostViewedPosts).then((snapshot) => {
               entry1.addEventListener('click', resclick);
               entry1.style.listStyle = "none"
               var banner = document.createElement("img")
-              getDownloadURL(Sref(storage, "posted/" + childKey + '/banner.png')).then(function(url) {
+              getDownloadURL(Sref(storage, "Posts/" + childKey + '/title.png')).then(function(url) {
                 
                 var test = url;
                 console.log(test)
@@ -239,8 +239,101 @@ get(mostViewedPosts1).then((snapshot) => {
   console.error(error);
 });
 
+//Show topics and stuff
+// Large stuff. Very large ----------------------------------------------------------------------
+//------------------------------------------------------------------------------------------
+//-----------------------------------------------TOPICS---------------------------------------
 if (typeof window !== "undefined") {
   window.addEventListener('DOMContentLoaded', (event) => {
+    document.getElementById("topic_pro").addEventListener('click', function() {
+      document.getElementById('res').remove()
+      var raa = document.createElement("ul")
+      raa.id = "res"
+      document.body.appendChild(raa)
+      var rf_pro = ref(db, "articles")
+      onValue(rf_pro, (snapshot) => {
+        snapshot.forEach((childSnapshot) => {
+          var raa1 = childSnapshot.child('topic').val()
+          console.log(raa1)
+          if (raa1 == "Programming") {
+            const childKey = childSnapshot.key;
+              const childData = childSnapshot.val();
+
+              console.log(childKey)
+              list.push(childKey)
+              var container = document.createElement("div")
+              var boco = document.createElement("div")
+              var listi = document.createElement("li")
+              container.classList.add("trending_container")
+              listi.classList.add("listi")
+
+
+          
+          
+              
+              var a = document.createElement("a");
+              var checki = sessionStorage.getItem("checker112")
+              
+              a.textContent = childKey;
+              //a.classList.add("entry")
+              //a.classList.add("entry2")
+              a.classList.add("trend_title")
+              a.style.listStyle = "none"
+              
+              a.setAttribute('href', "posts/" + childKey);
+              
+
+              var checkii = sessionStorage.getItem("check123")
+
+              
+
+              function resclick() {
+                sessionStorage.setItem("article", childKey);
+                window.open("viewer.html", '_self');
+              }
+
+              var har = document.createElement("hr")
+              har.style.marginBottom = "2vw"
+              har.style.marginTop = "1vw"
+              har.style.marginLeft = "-10vw"
+              har.classList.add("har")
+              var rel = document.getElementById("rel")
+              
+              try{
+              var bod = childSnapshot.child("body").val()
+              var bode = bod.slice(0, 30)
+              var boded = bode + "...."
+              var entry1 = document.createElement('li');
+              entry1.appendChild(document.createTextNode(boded));
+              entry1.addEventListener('click', resclick);
+              entry1.style.listStyle = "none"
+              var banner = document.createElement("img")
+              
+
+              
+              
+
+              //entry.style.boxShadow = "0 0 15px 4px rgba(0,0,0,0.06)"
+              
+              //entry.style.marginLeft = "-20vw"
+              entry1.classList.add("trending_body");
+              a.style.listStyle = "none" 
+              
+              //container.appendChild(har)
+              container.appendChild(a)
+              container.appendChild(entry1)
+              
+              var liner = document.createElement("hr")
+              listi.appendChild(container)
+              
+              listi.style.listStyle = "none"
+              raa.appendChild(listi)}catch(err){
+                console.log('error')                
+              }
+          }
+        })
+      })
+    })
     
     var res = document.getElementById("res")
     document.body.style.display = 'block'
@@ -282,6 +375,7 @@ if (typeof window !== 'undefined') {
     console.log(imma)
     document.getElementById("imm").src = imma
     document.getElementById("imm2").src = imma
+    document.getElementById("nama").innerHTML = user
     document.getElementById('starter').addEventListener('click', function() {
       window.open("signup", '_self')
     })
@@ -299,7 +393,7 @@ export default function Home() {
   const [showMe, setShowMe] = useState(false);
   function toggle(){
     setShowMe(!showMe);
-    document.getElementById('nama').innerHTML = user
+    
     document.getElementById('imm').style.display = 'none'
   }
   return (
@@ -353,13 +447,21 @@ export default function Home() {
               
             </div>
           </div>
+
+          
           
 
-        <div className='deez'>
-          <h1 className='techz'>Great Tech Blogs</h1>
+        <div className='deez shaped bg'>
+          <h1 className='techz animate-charcter'>Great Tech Blogs</h1>
           <button className='start' id='starter'>Start reading</button>
+          
+ 
         </div>
-        <hr className='seperator'></hr>
+       
+        
+
+        
+     
         <div className='trend'>
           <h1><BiTrendingUp /> Trending</h1>
           <ul id='rel'></ul>
@@ -368,13 +470,13 @@ export default function Home() {
         <h1 className='latest'>Latest</h1>
         <div className='aspects'>
           <h1 className='discohead'>Discover posts of your interest.</h1>
-          <Link href='topics/technology' className='discotop'>Technology</Link>
-          <Link href='topics/programming' className='discotop'>Programming</Link>
-          <Link href='topics/machinelearning' className='discotop'>Machine learning</Link>
-          <Link href='topics/health' className='discotop'>Health</Link>
-          <Link href='topics/sports' className='discotop'>Sports</Link>
-          <Link href='topics/politics' className='discotop'>Politics</Link>
-          <Link href='topics/events' className='discotop'>Events</Link>
+          <Link href='topics/technology' className='discotop' id='topic_tech'>Technology</Link>
+          <button  className='discotop' id='topic_pro'>Programming</button>
+          <Link href='topics/machinelearning' className='discotop' id='topic_machine'>Machine learning</Link>
+          <Link href='topics/health' className='discotop' id='topic_health'>Health</Link>
+          <Link href='topics/sports' className='discotop' id='topic_sports'>Sports</Link>
+          <Link href='topics/politics' className='discotop' id='topic_politics'>Politics</Link>
+          <Link href='topics/events' className='discotop' id='topic_events'>Events</Link>
           <hr className='discomar'></hr>
 
         </div>

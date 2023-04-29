@@ -72,3 +72,12 @@ export function getAllPostIds() {
       ...matterResult.data,
     };
   }
+
+  const Post = () => {
+    <main>
+      <body>
+        <h1>Hello</h1>
+      </body>
+    </main>
+  }
+  export default Post;

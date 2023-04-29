@@ -12,10 +12,16 @@
     "eslint": "8.35.0",
     "eslint-config-next": "13.2.4",
     "firebase": "^9.19.1",
+    "froala-editor": "^4.0.18",
     "gray-matter": "^4.0.3",
     "next": "13.2.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.8.0"
+  },
+  "browser": {
+    "fs": false,
+    "path": false,
+    "os": false
   }
 }
