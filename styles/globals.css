@@ -2,6 +2,9 @@
   width: 0px;
 }
 
+.display_none{
+  display: none;
+}
 .user{
   display: inline-block;
   margin-left: 2vw;
@@ -778,7 +781,7 @@ html {
   height: 35vw;
 
   margin-right: 20vw;
-  margin-left: -20vw;
+  margin-left: -12vw;
   padding-top: 0vw;
   margin-top: 0vw;
   margin-bottom: -1000vw;
@@ -1149,19 +1152,19 @@ html {
     margin-left: -20vw;
   }
 
-  .entry1{
-    font-size: 10vw;
-    width: 40vw;
-    text-align: left;
-  }
+  
 
   .aaa{
-    width: 10vw;
+    width: 40vw;
     margin-left: 20vw;
   }
+
+  .trend_title{
+    font-size: 10vw;
+  }
   .lbanner{
-    width: 30vw;
-    height: 20vw;
+    width: 25vw;
+    height: 15vw;
     margin-bottom: 2vw;
     display: inline;
     margin-top: 10vw;
@@ -1288,7 +1291,17 @@ html {
   padding-top: 10vw;
   width: 100vw;
   margin-bottom: -20vw;
-  margin-right: -40vw;
+  margin-left: -4vw;
+}
+
+
+
+.lbanner{
+  width: 50vw;
+  height: 30vw;
+  margin-right: -14vw;
+  margin-left: -2;
+  
 }
 
 
@@ -1301,6 +1314,11 @@ html {
 .entry1{
   margin-bottom: 20vw;
   margin-top: 6vw;
+  margin-right: -8vw;
+  width: 80vw;
+  font-size: 8vw;
+  margin-left: 14vw;
+  text-align: justify;
 }
 
 .bann{

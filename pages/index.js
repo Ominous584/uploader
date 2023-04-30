@@ -249,6 +249,7 @@ if (typeof window !== "undefined") {
       document.getElementById('res').remove()
       var raa = document.createElement("ul")
       raa.id = "res"
+      console.log('clicked')
       document.body.appendChild(raa)
       var rf_pro = ref(db, "articles")
       onValue(rf_pro, (snapshot) => {
@@ -334,22 +335,101 @@ if (typeof window !== "undefined") {
         })
       })
     })
-    
-    var res = document.getElementById("res")
-    document.body.style.display = 'block'
-    onValue(rf, (snapshot) => {
-      snapshot.forEach((childSnapshot) => {
-              
-        // ...
-      });
-    }, {
-      onlyOnce: true
-    });
-  });
-    
+    document.getElementById("topic_machine").addEventListener('click', function() {
+      document.getElementById('res').remove()
+      var raa = document.createElement("ul")
+      console.log('machine clicked')
+      raa.id = "res"
+      document.body.appendChild(raa)
+      var rf_pro = ref(db, "articles")
+      onValue(rf_pro, (snapshot) => {
+        snapshot.forEach((childSnapshot) => {
+          var raa1 = childSnapshot.child('topic').val()
+          console.log(raa1)
+          if (raa1 == "Machine learning") {
+            const childKey = childSnapshot.key;
+              const childData = childSnapshot.val();
 
-  
+              console.log(childKey)
+              list.push(childKey)
+              var container = document.createElement("div")
+              var boco = document.createElement("div")
+              var listi = document.createElement("li")
+              container.classList.add("trending_container")
+              listi.classList.add("listi")
+
+
+          
+          
+              
+              var a = document.createElement("a");
+              var checki = sessionStorage.getItem("checker112")
+              
+              a.textContent = childKey;
+              //a.classList.add("entry")
+              //a.classList.add("entry2")
+              a.classList.add("trend_title")
+              a.style.listStyle = "none"
+              
+              a.setAttribute('href', "posts/" + childKey);
+              
+
+              var checkii = sessionStorage.getItem("check123")
+
+              
+
+              function resclick() {
+                sessionStorage.setItem("article", childKey);
+                window.open("viewer.html", '_self');
+              }
+
+              var har = document.createElement("hr")
+              har.style.marginBottom = "2vw"
+              har.style.marginTop = "1vw"
+              har.style.marginLeft = "-10vw"
+              har.classList.add("har")
+              var rel = document.getElementById("rel")
+              
+              try{
+              var bod = childSnapshot.child("body").val()
+              var bode = bod.slice(0, 30)
+              var boded = bode + "...."
+              var entry1 = document.createElement('li');
+              entry1.appendChild(document.createTextNode(boded));
+              entry1.addEventListener('click', resclick);
+              entry1.style.listStyle = "none"
+              var banner = document.createElement("img")
+              
+
+              
+              
+
+              //entry.style.boxShadow = "0 0 15px 4px rgba(0,0,0,0.06)"
+              
+              //entry.style.marginLeft = "-20vw"
+              entry1.classList.add("trending_body");
+              a.style.listStyle = "none" 
+              
+              //container.appendChild(har)
+              container.appendChild(a)
+              container.appendChild(entry1)
+              
+              var liner = document.createElement("hr")
+              listi.appendChild(container)
+              
+              listi.style.listStyle = "none"
+              raa.appendChild(listi)}catch(err){
+                console.log('error')                
+              }
+          }
+        })
+      })
+    })
+  })
 }
+      
+      
+ 
 
 
 //Acount shower and stuff -----------------------------------------------------------------
@@ -369,21 +449,14 @@ if (typeof window !== 'undefined') {
     
   } else {
     console.log("logged in + " + user)
-    document.getElementById('logol').style.display = 'none'
-    document.getElementById('logol1').style.display = 'none'
-    var imma = "https://ui-avatars.com/api/?name=" + user
-    console.log(imma)
-    document.getElementById("imm").src = imma
-    document.getElementById("imm2").src = imma
-    document.getElementById("nama").innerHTML = user
+    document.getElementById("user").style.display = "block"
+    document.getElementById("user").innerHTML = user
     document.getElementById('starter').addEventListener('click', function() {
-      window.open("signup", '_self')
-    })
-    
-    
-    
-    
-    console.log(imma)
+      window.open("posts", '_self')
+    }
+    )
+    document.getElementById('logol').style.display = "none"
+    document.getElementById('logol1').style.display = "none"
   }
   })}
 
@@ -439,11 +512,11 @@ export default function Home() {
                 <div className='nama'><h1 id='nama' ></h1></div>
               </div>
               
-              <Link href='articles' className='del1 safe'>Articles</Link>
-              <Link href='#' className='del1  safe'>About</Link>
-              <Link href='#' className='del1 safe'>Contact</Link>
-              <Link href='login' className='del1 alt'>Login</Link>
-              <Link href='signup' className='del1 alt'>Sign up</Link>
+              
+              <Link href='editor' className='del1  safe'>Editor</Link>
+              
+              <Link href='profile' className='del1 alt'>Profile</Link>
+              <Link href='about' className='del1 alt'>About</Link>
               
             </div>
           </div>
@@ -470,13 +543,13 @@ export default function Home() {
         <h1 className='latest'>Latest</h1>
         <div className='aspects'>
           <h1 className='discohead'>Discover posts of your interest.</h1>
-          <Link href='topics/technology' className='discotop' id='topic_tech'>Technology</Link>
+          <button href='topics/technology' className='discotop' id='topic_tech'>Technology</button>
           <button  className='discotop' id='topic_pro'>Programming</button>
-          <Link href='topics/machinelearning' className='discotop' id='topic_machine'>Machine learning</Link>
-          <Link href='topics/health' className='discotop' id='topic_health'>Health</Link>
-          <Link href='topics/sports' className='discotop' id='topic_sports'>Sports</Link>
-          <Link href='topics/politics' className='discotop' id='topic_politics'>Politics</Link>
-          <Link href='topics/events' className='discotop' id='topic_events'>Events</Link>
+          <button className='discotop' id='topic_machine'>Machine learning</button>
+          <button className='discotop' id='topic_health'>Health</button>
+          <button className='discotop' id='topic_sports'>Sports</button>
+          <button className='discotop' id='topic_politics'>Politics</button>
+          <button className='discotop' id='topic_events'>Events</button>
           <hr className='discomar'></hr>
 
         </div>
