@@ -8,7 +8,46 @@
   margin-top: -6px;
  
 }
-editor_title{
+.navbar_editor{
+  width: 140vw;
+    height: 12vw;
+    background-color: rgb(49, 49, 49);
+    display: flex;
+    padding-bottom: 2vw;
+    margin-bottom: 2vw;
+    padding-top: 1vw;
+    margin-top: -10vw;
+    margin-left: -2vw;
+    
+}
+
+.topic_select_head{
+  color: rgb(61, 61, 61);
+}
+
+.topic_select{
+  float: right;
+  margin-top: -30vw;
+  margin-right: 10vw;
+  box-shadow: 0px 0px 15px 4px rgba(0,0,0,0.06);
+  padding: 2vw;
+  border-radius: 4%;
+  position: sticky;
+}
+
+.topic_selector{
+  border: none;
+  outline: none;
+  background-color: rgb(240, 240, 240);
+  margin-left: 2vw;
+  font-size: 1.2vw;
+}
+
+.topic_selector_item{
+  outline: none;
+  border: none;
+}
+.editor_title{
   border: none;
   font-size: 3vw;
   background-color: #F6F1F1;
@@ -30,6 +69,7 @@ editor_title{
   height: 5vw;
   margin-top: 2vw;
   color: rgb(105, 105, 105);
+  padding-bottom: 2vw;
 }
 
 .editor_heading{
@@ -154,6 +194,10 @@ editor_title{
   .pid_shower{
     display: grid;
   }
+  .preview_img{
+    padding-top: 10vw;
+  }
+  
   .editor_body{
     width: 60vw;
     font-size: 10vw;
@@ -732,8 +776,9 @@ html {
   
   width: 50vw;
   height: 35vw;
-  margin-left: auto;
-  margin-right: auto;
+
+  margin-right: 20vw;
+  margin-left: -20vw;
   padding-top: 0vw;
   margin-top: 0vw;
   margin-bottom: -1000vw;
@@ -760,7 +805,7 @@ html {
 .lbanner{
   width: 25vw;
   height: 15vw;
-  margin-left: 55vw;
+  margin-left: 40vw;
   margin-right: 0vw;
   padding-left: 10vw;
   
@@ -981,6 +1026,59 @@ html {
 }
 
 @media only screen and (max-width: 767px) {
+  .profiledeez{
+    margin-top: 10vw;
+    padding-top: vw;
+  }
+
+  .navbar_editor{
+    width: 140vw;
+    height: 12vw;
+    background-color: rgb(49, 49, 49);
+    display: flex;
+    padding-bottom: 2vw;
+    margin-bottom: 2vw;
+    padding-top: 1vw;
+    margin-top: 0vw;
+    margin-left: -2vw;
+  }
+
+  .inputer{
+    height: 15vw;
+    margin-top: -6vw;
+    width: 200vw;
+  }
+
+  .bold_input, .image_input, .heading_input{
+    font-size: 10vw;
+    margin-right: 2vw;
+  }
+
+  .editor_publish{
+    font-size: 8vw;
+    width: 35vw;
+    height: 10vw;
+    margin-left: 28vw;
+  }
+
+  .topic_select{
+    position: relative;
+    bottom: 0;
+    margin-top: 10vw;
+    margin-right: 30vw;
+  }
+
+  .topic_selector{
+    font-size: 5vw;
+    width: 35vw;
+    height: 10vw;
+  }
+  .topic_selector_item{
+    font-size: 3vw;
+    margin-top: -10vw;
+    padding: 0vw;
+    margin-bottom: -10vw;
+  }
   .navbar{
     width: 140vw;
     height: 12vw;
@@ -993,6 +1091,7 @@ html {
     margin-left: -2vw;
     
   }
+
   .user{
     display: none;
   }

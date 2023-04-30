@@ -56,11 +56,16 @@ if (typeof window !== "undefined") {
         const childKey = snapshot.child("password").val();
         const childData = snapshot.val();
         console.log(childKey)
-        if (pass == childKey){
+        console.log(pass)
+        console.log(toString(pass) == toString(childKey))
+        if (toString(pass) == toString(childKey)){
           localStorage.setItem('log', nae)
           //window.open('profile.html', '_self')
           console.log("........permitted")  
-          localStorage.setItem('user', username)    
+          localStorage.setItem('user', username) 
+          console.log(nae)
+          localStorage.setItem('name', nae)
+          window.open('profile', '_self')   
         }
         else{
           console.log(pass)

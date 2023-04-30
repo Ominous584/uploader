@@ -35,10 +35,10 @@ const app = initializeApp(firebaseConfig);
 
 
 const db = getDatabase(app)
-
-if (typeof window !== "undefined") {
-    window.addEventListener('DOMContentLoaded', (event) => {
-        var user = localStorage.getItem("user")
+if (typeof window !== 'undefined') {
+  window.addEventListener('DOMContentLoaded', (event) => {
+      var user = localStorage.getItem('name')
+      console.log(user)
         document.getElementById('edit_about').style.visibility = "hidden"
         document.getElementById('create_about').addEventListener('click', function(){
           document.getElementById("edit_about").style.visibility = "visible"
@@ -51,6 +51,7 @@ if (typeof window !== "undefined") {
           set(rf, document.getElementById('about_text').value)
           document.getElementById("edit_about").style.visibility = "hidden"
         }) 
+        console.log(user)
         var rf_about = ref(db, "People/" + user + "/about")
         onValue(rf_about, (snapshot) => {
           if (snapshot.exists()){
@@ -139,7 +140,7 @@ export default function useArticles(){
     return (
         <main>
             <div className='navbar'>
-            <div><a className='logo' href='/'>Dysonos</a></div>
+            <div className='logo'>Dysonos</div>
             <div className='nav-links'>
            
               <Link href='articles' className='del safe'>Crowd articles</Link>
@@ -179,6 +180,7 @@ export default function useArticles(){
               
             </div>
           </div>
+
           <div className='profiledeez'>
           <img id='profile_pic' className='profile_pic_prof'></img>
             <h1 className='profname' id='profname'>Your name</h1>

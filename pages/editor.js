@@ -40,16 +40,18 @@ const storage = getStorage();
 let files_1
 if (typeof window !== "undefined") {
     window.addEventListener('DOMContentLoaded', (event) => {
-      document.getElementById("text0").addEventListener('keypress', function (e) {
+      document.getElementById("text0").addEventListener('keypress', function (e){
         if (e.key == 'Enter'){
           var el = this;  
     setTimeout(function(){
       var fella = el.rows
       el.rows = fella + 1
+      console.log(fella)
       el.style.height = "auto"
     },0)
         }
       })
+      
       
         var user = localStorage.getItem("user")
         var dialog = sessionStorage.getItem("dialog")
@@ -70,7 +72,17 @@ if (typeof window !== "undefined") {
             normal.classList.add('editor_body')
             heading.classList.add('editor_heading')
             document.getElementById("body_input").appendChild(heading)
-            normal.addEventListener('input', editor_body, false);
+            normal.addEventListener('keypress', function (e){
+              if (e.key == 'Enter'){
+                var el = this;  
+          setTimeout(function(){
+            var fella = el.rows
+            el.rows = fella + 1
+            console.log(fella)
+            el.style.height = "auto"
+          },0)
+              }}
+        );
             document.getElementById("body_input").appendChild(normal)
             sessionStorage.setItem("dialog", dialog2)
             var rf_texter = ref(db, 'articles/' + document.getElementById("title").value);
@@ -230,7 +242,7 @@ export default function useArticles(){
 
         <main>
             
-            <div className='navbar'>
+            <div className='navbar_editor navbar'>
             <div><a className='logo' href='/'>Dysonos</a></div>
             <div className='nav-links'>
            
@@ -283,18 +295,18 @@ export default function useArticles(){
               <img className='preview_img' id='previewed' src='/preview_img.png'></img>
           <textarea cols="10" rows="1" id="title" class="editor_title" placeholder="Title..."></textarea>
           <div id='body_input'>
-          <textarea cols="10" rows="100" id="text0" class="editor_body"  placeholder="Body..."></textarea>
+          <textarea cols="10" rows="1" id="text0" class="editor_body"  placeholder="Body..."></textarea>
           </div>
           </div>
           <div className='topic_select'>
             <h1 className='topic_select_head'>Select the topic</h1>
             <select id='topic_selector' className='topic_selector'>
-              <option value="1">Technology</option>
-              <option value="2">Machine learning</option>
-              <option value="3">Programming</option>
-              <option value="4">Sports</option>
-              <option value="5">Politics</option>
-              <option value="6">Events</option>
+              <option value="1" className='topic_selector_item'>Technology</option>
+              <option value="2" className='topic_selector_item'>Machine learning</option>
+              <option value="3" className='topic_selector_item'>Programming</option>
+              <option value="4" className='topic_selector_item'>Sports</option>
+              <option value="5" className='topic_selector_item'>Politics</option>
+              <option value="6" className='topic_selector_item'>Events</option>
             </select>
           </div>
           </div>

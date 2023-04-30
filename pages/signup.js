@@ -45,7 +45,7 @@ if (typeof window !== "undefined") {
     var user = document.getElementById("username").value;
 
 var rf1 = ref(db, "People/" + name)
-set(rf1, {
+set(rf1, { 
     username:user,
     name: name,
     email:email,
@@ -58,10 +58,13 @@ localStorage.setItem("user", name)
 var rf3 = ref(db, "People/" + name + "/posts")
 set(rf3, {
   number: 0
-})
-    }
+}).then( () => {
+window.open('login', '_self')
+})}
 })
 }
+
+
 
 const myLoader = ({ src, width, quality }) => {
     return `https://example.com/${src}?w=${width}&q=${quality || 75}`
