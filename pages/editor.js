@@ -113,7 +113,17 @@ if (typeof window !== "undefined") {
                     var dialog2 = parseInt(dialog1) + 1
                     text_r.id = idea
                     text_r.classList.add('editor_body')
-                    text_r.addEventListener('input', editor_body, false);
+                    text_r.addEventListener('keypress', function (e){
+                      if (e.key == 'Enter'){
+                        var el = this;  
+                  setTimeout(function(){
+                    var fella = el.rows
+                    el.rows = fella + 1
+                    console.log(fella)
+                    el.style.height = "auto"
+                  },0)
+                      }}
+                );
                     document.getElementById("body_input").appendChild(text_r)
                     sessionStorage.setItem("dialog", dialog2)
                     var rf_texter = ref(db, 'articles/' + document.getElementById("title").value);
