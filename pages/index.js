@@ -438,13 +438,23 @@ if (typeof window !== 'undefined') {
   window.addEventListener('DOMContentLoaded', (event) => {
     
   var user = localStorage.getItem("user")
+  console.log(user)
   
 
   if (user == null || user == undefined || user == "") {
     document.getElementById("user").style.display = "none"
     console.log("not logged in")
     document.getElementById('starter').addEventListener('click', function() {
-      window.open("signup", '_self')
+      if (typeof window !== 'undefined') {
+        var checkk = localStorage.getItem("user")
+        console.log('the user is - ', checkk)
+        if (checkk == null || checkk == undefined || checkk == "" || checkk == NaN) {
+          window.open('login', '_self')
+        } else{
+          window.open('profile', '_self')
+        }
+      }
+
     })
     
   } else {

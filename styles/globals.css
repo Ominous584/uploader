@@ -24,6 +24,30 @@
     
 }
 
+.navbar_login{
+  width: 140vw;
+    height: 12vw;
+    background-color: rgb(49, 49, 49);
+    display: flex;
+    padding-bottom: 2vw;
+    margin-bottom: 2vw;
+    padding-top: 1vw;
+    margin-top: -10vw;
+    margin-left: -2vw;
+}
+
+.navbar_signup{
+  width: 140vw;
+    height: 12vw;
+    background-color: rgb(49, 49, 49);
+    display: flex;
+    padding-bottom: 2vw;
+    margin-bottom: 2vw;
+    padding-top: 1vw;
+    margin-top: -10vw;
+    margin-left: -2vw;
+}
+
 .topic_select_head{
   color: rgb(61, 61, 61);
 }
@@ -558,9 +582,7 @@ html {
   display: block;
 }
 
-.start:hover{
-  transition: transform .2s;
-}
+
 
 .css-selector {
   background: linear-gradient(350deg, #079dd5, #2ee1da);
@@ -1038,22 +1060,26 @@ html {
     width: 140vw;
     height: 12vw;
     background-color: rgb(49, 49, 49);
-    display: flex;
-    padding-bottom: 2vw;
-    margin-bottom: 2vw;
-    padding-top: 1vw;
-    margin-top: 0vw;
+  
+    padding-top: 10vw;
+    margin-top: 10vw;
     margin-left: -2vw;
+    
+  }
+
+  .editor{
+    margin-top: 10vw;
   }
 
   .inputer{
     height: 15vw;
-    margin-top: -6vw;
-    width: 200vw;
+    margin-top: 2vw;
+
+    width: 130vw;
   }
 
   .bold_input, .image_input, .heading_input{
-    font-size: 10vw;
+    font-size: 8vw;
     margin-right: 2vw;
   }
 
@@ -1061,7 +1087,7 @@ html {
     font-size: 8vw;
     width: 35vw;
     height: 10vw;
-    margin-left: 28vw;
+    margin-left: 10vw;
   }
 
   .topic_select{
@@ -1094,6 +1120,7 @@ html {
     margin-left: -2vw;
     
   }
+
 
   .user{
     display: none;
@@ -1153,7 +1180,15 @@ html {
   }
 
   
-
+  .navbar_signup{
+    width: 180vw;
+    height: 12vw;
+    background-color: rgb(49, 49, 49);
+  
+    padding-top: 10vw;
+    margin-top:   0vw;
+    margin-left:  0vw;
+  }
   .aaa{
     width: 40vw;
     margin-left: 20vw;
@@ -1193,10 +1228,7 @@ html {
     margin-left: 20vw;
   }
 
-  .start:hover{
-    transform: scale(1.5)
-  }
-
+  
   .latest{
     font-size: 20vw;
     width: 10vw;
@@ -1271,7 +1303,9 @@ html {
   margin-right: auto;
   margin-left: -50vw;
   margin-top: 12vw;
-  
+  z-index:9;
+  position: fixed;
+  right: 0;
 }
 
 .entry{
@@ -1328,10 +1362,18 @@ html {
   margin-top: -2vw;
 }
 
+.navbar_login{
+  width: 120vw;
+  height: 12vw;
+  margin-top: 0vw;
+  background-color: rgb(49, 49, 49); 
+} 
+
 .contain{
-  width: 100vw;
-  height: 150vw;
-  margin-top: 10vw;
+  width: 120vw;
+  height: 300vw;
+  margin-top: -2vw;
+  padding-top: 40vw;
   border-radius: 0px;
 }
 
@@ -1342,6 +1384,10 @@ html {
   font-size: 6vw;
   margin-left: 20vw;
   margin-bottom: 5vw;
+}
+
+.sinup{
+  width: 180vw
 }
 
 .buttonlog{

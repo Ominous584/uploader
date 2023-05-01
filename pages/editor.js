@@ -285,11 +285,10 @@ export default function useArticles(){
                 <div className='nama'><h1 id='nama' ></h1></div>
               </div>
               
-              <Link href='articles' className='del1 safe'>Articles</Link>
-              <Link href='#' className='del1  safe'>About</Link>
-              <Link href='#' className='del1 safe'>Contact</Link>
-              <Link href='login' className='del1 alt'>Login</Link>
-              <Link href='signup' className='del1 alt'>Sign up</Link>
+              <Link href='/' className='del1 safe'>Home</Link>
+              <Link href='#' className='del1  safe'>Profile</Link>
+              <Link href='#' className='del1 safe'>About</Link>
+              
               
             </div>
           </div>
@@ -308,7 +307,7 @@ export default function useArticles(){
           <textarea cols="10" rows="1" id="text0" class="editor_body"  placeholder="Body..."></textarea>
           </div>
           </div>
-          <div className='topic_select'>
+          <div className='topic_select' style={{ display: showMe ? "none" : "block"}}>
             <h1 className='topic_select_head'>Select the topic</h1>
             <select id='topic_selector' className='topic_selector'>
               <option value="1" className='topic_selector_item'>Technology</option>

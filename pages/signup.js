@@ -79,7 +79,7 @@ export default function useArticles(){
     return (
         <main>
             <header>
-              <div className='navbar'>
+              <div className='navbar_signup'>
                 <div className='logo'><Link href='/'  className='logo'>Home</Link></div>
                 <div className='nav-links'>
                   <Link href='#' className='del safe'>Home</Link>
@@ -107,7 +107,7 @@ export default function useArticles(){
         
         
 
-        <div className='contain'>
+        <div className='contain sinup'>
         <h1 className='login'>Signup</h1>
         <input type='text' placeholder='Name' className='input' id='name'/>
         <input type='text' placeholder='Username' className='input' id='username'/>

@@ -93,7 +93,7 @@ export default function useArticles(){
     }
     return (
         <main>
-            <div className='navbar'>
+            <div className='navbar_login'>
             <div className='logo'>Dysonos</div>
             <div className='nav-links'>
            
