@@ -47,6 +47,15 @@ const storage = getStorage();
 
 
 const list = [];
+
+let name_ra
+
+if (typeof window !== "undefined") {
+  window.addEventListener('DOMContentLoaded', (event) => {
+    if (localStorage.getItem("name") == null || localStorage.getItem("name") == undefined) {
+  } else {
+    window.open("home", '_self');
+  }})}
 const mostViewedPosts = query(ref(db, "articles"), orderByChild('timestamp'));
 const mostViewedPosts1 = query(ref(db, "articles"), orderByChild('views/views', 'desc'));
 console.log(mostViewedPosts)
@@ -245,6 +254,7 @@ get(mostViewedPosts1).then((snapshot) => {
 //-----------------------------------------------TOPICS---------------------------------------
 if (typeof window !== "undefined") {
   window.addEventListener('DOMContentLoaded', (event) => {
+    name_ra = sessionStorage.getItem("name")
     document.getElementById("topic_pro").addEventListener('click', function() {
       document.getElementById('res').remove()
       var raa = document.createElement("ul")
@@ -434,46 +444,13 @@ if (typeof window !== "undefined") {
 
 //Acount shower and stuff -----------------------------------------------------------------
 //----------------------------------------------------------Account-----------------------
-if (typeof window !== 'undefined') {
-  window.addEventListener('DOMContentLoaded', (event) => {
-    
-  var user = localStorage.getItem("user")
-  console.log(user)
-  
 
-  if (user == null || user == undefined || user == "") {
-    document.getElementById("user").style.display = "none"
-    console.log("not logged in")
-    document.getElementById('starter').addEventListener('click', function() {
-      if (typeof window !== 'undefined') {
-        var checkk = localStorage.getItem("user")
-        console.log('the user is - ', checkk)
-        if (checkk == null || checkk == undefined || checkk == "" || checkk == NaN) {
-          window.open('login', '_self')
-        } else{
-          window.open('profile', '_self')
-        }
-      }
-
-    })
-    
-  } else {
-    console.log("logged in + " + user)
-    document.getElementById("user").style.display = "block"
-    document.getElementById("user").innerHTML = user
-    document.getElementById('starter').addEventListener('click', function() {
-      window.open("posts", '_self')
-    }
-    )
-    document.getElementById('logol').style.display = "none"
-    document.getElementById('logol1').style.display = "none"
-  }
-  })}
 
 
 export default function Home() {
 
   const [showMe, setShowMe] = useState(false);
+ 
   function toggle(){
     setShowMe(!showMe);
     
@@ -496,8 +473,8 @@ export default function Home() {
               <Link href='articles' className='del safe'>Crowd articles</Link>
               <Link href='#' className='del safe'>About</Link>
               <Link href='#' className='del safe'>Contact</Link>
-              <Link href='login' className='del alt' id='logol'>Login</Link>
-              <Link href='signup' className='del alt' id='logol1'>Sign up</Link>
+              <Link href='login' className='del alt' id='logol' >Login</Link>
+              <Link href='signup' className='del alt' id='logol1' >Sign up</Link>
               
             </div>
             <div id='user' className='user'>

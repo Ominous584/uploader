@@ -58,7 +58,7 @@ export default function Home() {
             <div className='nav-links'>
            
               <Link href='articles' className='del safe'>Crowd articles</Link>
-              <Link href='#' className='del safe'>About</Link>
+              <Link href='about' className='del safe'>About</Link>
               <Link href='#' className='del safe'>Contact</Link>
               <Link href='login' className='del alt' id='logol'>Login</Link>
               <Link href='signup' className='del alt' id='logol1'>Sign up</Link>

@@ -2,6 +2,26 @@
   width: 0px;
 }
 
+.home_topics_list_item{
+  width: 20vw;
+  height: 10vw;
+  margin: 1vw;
+  font-size: 1.8vw;
+  background-color: rgb(46, 46, 46);
+  color: white;
+  border-radius: 5%;
+  transition: all linar 2s;
+  justify-content: center;
+  vertical-align: middle;
+}
+
+
+
+.home_topics_list_item:hover{
+  transform: scale(1.1);
+}
+
+
 .display_none{
   display: none;
 }
@@ -156,6 +176,7 @@
   margin-left: -2.5vw;
   width: 70vw;
   padding-right: 0vw;
+  z-index: 0;
 }
 
 .post_author_posts_item{
@@ -204,6 +225,7 @@
   justify-content: center;
   margin-bottom: 8vw;
   margin-top: 4vw;
+  z-index: 0;
   
 }
 
@@ -431,7 +453,7 @@ html {
 .trend_title{
   text-decoration: none;
   color: black;
-  font-size: 1.8vw;
+  font-size: 2.5vw;
 }
 
 .trending_container{
@@ -443,6 +465,7 @@ html {
 .trending_body{
   margin-left: 10vw;
   margin-bottom: 4vw;
+  font-size: 1.5vw;
 }
 
 .title_post{
@@ -676,9 +699,28 @@ html {
   margin-top: -5vw;
   box-shadow: 0 2px 3px -1px rgba(0, 0, 0, 0.1);
   
-  
+  z-index: 100;
   
   margin-bottom: 20vw;
+}
+
+.homer{
+  margin-top: -10vw;
+  margin-bottom: 2vw;
+  position: fixed;
+  z-index: 100;
+}
+.homer_content{
+  position: relative;
+  margin-top: 10vw;
+}
+.topic{
+  margin-top: -1vw;
+}
+
+.home_trend{
+  margin-top: 5vw;
+  padding-top: 2vw;
 }
 .input{
   width: 20vw;
@@ -810,6 +852,8 @@ html {
   
   
 }
+
+
 .entry{
   font-size: 3vw;
   padding-bottom: 0vw;
@@ -871,6 +915,10 @@ html {
 
 .lato{
   
+}
+
+.topic_container{
+  margin-top: 10vw;
 }
 @media only screen and (max-width: 1272px) {
   .navbar{
@@ -1055,6 +1103,22 @@ html {
     margin-top: 10vw;
     padding-top: vw;
   }
+  
+  .home_topics_list_item{
+    display: block;
+    width: 40vw;
+    height: 20vw;
+    margin-left: auto;
+    margin-right: auto;
+    
+  }
+
+  .home_topics_list_item_text{
+    font-size: 5vw;
+  }
+  .home_topics{
+    padding-top: 10vw;
+  }
 
   .navbar_editor{
     width: 140vw;
@@ -1172,13 +1236,20 @@ html {
     position: absolute;
     bottom : 1000;
     display: none;
+    
   }
 
   .boco{
     width: 70vw;
     margin-left: -20vw;
   }
+  .boco_home{
+    margin-left: -30vw;
+    margin-right: 0;
+  }
 
+
+  
   
   .navbar_signup{
     width: 180vw;
@@ -1204,6 +1275,17 @@ html {
     display: inline;
     margin-top: 10vw;
     margin-right: 0vw;
+  }
+
+  .lbanner_home{
+    margin-left: -10vw;
+    margin-right: -10;
+    margin-top: -2vw;
+
+  }
+
+  .topic{
+    margin-top: -1vw;
   }
 
   .deez{
@@ -1437,6 +1519,9 @@ body{
   display: none;
   margin-left: -8vw;
   border-radius: 10px;
+  z-index: 500;
+  position: absolute;
+  visibility: visible;
 }
 .droper{
   display: block;
