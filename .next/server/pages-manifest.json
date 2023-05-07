@@ -2,7 +2,5 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/": "pages/index.js",
-  "/topic/[pid]": "pages/topic/[pid].js",
-  "/editor": "pages/editor.js"
+  "/topic/[pid]": "pages/topic/[pid].js"
 }

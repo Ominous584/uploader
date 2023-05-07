@@ -456,6 +456,17 @@ export default function Home() {
     
     document.getElementById('imm').style.display = 'none'
   }
+
+  if (typeof window !== "undefined") {
+    if  (localStorage.hasOwnProperty('name')) {
+      console.log('name exists')
+      document.getElementById('logol').style.display = 'none'
+      document.getElementById('logol1').style.display = 'none'
+      document.getElementById('imm').src = "https://ui-avatars.com/api/?name=" + localStorage.getItem("name") + "rounded=true&size=50"
+    } else {
+      console.log('name does not exist')
+      document.getElementById('imm').style.display = 'none'
+    }}
   return (
  
     <main >
@@ -471,10 +482,10 @@ export default function Home() {
             <div className='nav-links'>
            
               <Link href='articles' className='del safe'>Crowd articles</Link>
-              <Link href='#' className='del safe'>About</Link>
+              <Link href='/about' className='del safe'>About</Link>
               <Link href='#' className='del safe'>Contact</Link>
               <Link href='login' className='del alt' id='logol' >Login</Link>
-              <Link href='signup' className='del alt' id='logol1' >Sign up</Link>
+              <Link href='signup' className='del alt' id='logol1'>Sign up</Link>
               
             </div>
             <div id='user' className='user'>
@@ -506,7 +517,7 @@ export default function Home() {
               <Link href='about' className='del1 alt'>About</Link>
               
             </div>
-          </div>
+          </div> 
 
           
           
