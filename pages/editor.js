@@ -41,6 +41,20 @@ let files_1
 if (typeof window !== "undefined") {
     window.addEventListener('DOMContentLoaded', (event) => {
       document.getElementById("text0").addEventListener('keypress', function (e){
+        var a = this.selectionStart
+        console.log(a)
+        console.log(e.key)
+        if (a % 50 == 0){
+          if (e.key != 'Backspace'){
+          var el1 = this
+          el1.rows = el1.rows + 1
+          el1.style.height = "auto"
+          console.log("added")
+        }
+        
+      }
+      })
+      document.getElementById("text0").addEventListener('keypress', function (e){
         if (e.key == 'Enter'){
           var el = this;  
     setTimeout(function(){
@@ -53,7 +67,7 @@ if (typeof window !== "undefined") {
       })
       
       
-        var user = localStorage.getItem("user")
+        var user = localStorage.getItem("name")
         var dialog = sessionStorage.getItem("dialog")
         sessionStorage.setItem("dialog", 0)
         console.log("the dialog is ", dialog)
@@ -69,9 +83,24 @@ if (typeof window !== "undefined") {
             ide = ide + 1
             idea = "text" + ide
             normal.id = idea
+            normal.placeholder = "Body..."
             normal.classList.add('editor_body')
             heading.classList.add('editor_heading')
             document.getElementById("body_input").appendChild(heading)
+            normal.addEventListener('keypress', function (e){
+        var a = this.selectionStart
+        console.log(a)
+        console.log(e.key)
+        if (a % 50 == 0){
+          if (e.key != 'Backspace'){
+          var el1 = this
+          el1.rows = el1.rows + 1
+          el1.style.height = "auto"
+          console.log("added")
+        }
+        
+      }
+      })
             normal.addEventListener('keypress', function (e){
               if (e.key == 'Enter'){
                 var el = this;  
@@ -113,6 +142,21 @@ if (typeof window !== "undefined") {
                     var dialog2 = parseInt(dialog1) + 1
                     text_r.id = idea
                     text_r.classList.add('editor_body')
+                    text_r.placeholder = "Body..."
+                    text_r.addEventListener('keypress', function (e){
+        var a = this.selectionStart
+        console.log(a)
+        console.log(e.key)
+        if (a % 50 == 0){
+          if (e.key != 'Backspace'){
+          var el1 = this
+          el1.rows = el1.rows + 1
+          el1.style.height = "auto"
+          console.log("added")
+        }
+        
+      }
+      })
                     text_r.addEventListener('keypress', function (e){
                       if (e.key == 'Enter'){
                         var el = this;  
@@ -193,12 +237,6 @@ if (typeof window !== "undefined") {
         var rf_publish = ref(db, 'articles/' + title); 
         set(rf_publish, data)
         console.log(user)
-        var rf_publish_user = ref(db, 'People/' + user + '/posts/list/' + title);
-        set(rf_publish_user, data)
-        var rf_publish_topic = ref(db, "Topics/" + topic + "/" + title)
-        set(rf_publish_topic, data)
-        var stref = Sref(storage, "Posts/" + title + "/" + "title" + ".png")
-        uploadBytes(stref, files_1[0]);
         var rf_publish_1 = ref(db, 'articles/' + title + "/views")
         var rf_publish_user_1 = ref(db, 'People/' + user + "/posts/list/" + title + "/views")
         set(rf_publish_1, {
@@ -207,6 +245,17 @@ if (typeof window !== "undefined") {
         set(rf_publish_user_1, {
           views: 0
         })
+        var stref = Sref(storage, "Posts/" + title + "/" + "title" + ".png")
+        uploadBytes(stref, files_1[0]);
+        var rf_publish_user = ref(db, 'People/' + user + '/posts/list/' + title);
+        set(rf_publish_user, data)
+        var rf_publish_topic = ref(db, "Topics/" + topic + "/" + title)
+        set(rf_publish_topic, data).then(() => {
+          window.open('posts/' + title, '_self')
+        })
+        
+        
+        
         /*var stref = Sref(storage, "Article/posted/" + titles + "/" + "img" + ch + ".png")
         uploadBytes(stref, files[0]);*/
     })

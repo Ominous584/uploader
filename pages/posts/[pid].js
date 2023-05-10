@@ -78,7 +78,7 @@ const Post = () => {
           if (snapshot.exists()) {
             console.log(snapshot.val());
             var topic = snapshot.val()
-            var rf4 = ref(db, "Topics/" + topic + pid + "/views");
+            var rf4 = ref(db, "Topics/" + topic + "/" + pid + "/views");
           get(rf4).then((snapshot) => {
             if (snapshot.exists()) {
               console.log(snapshot.val());
@@ -112,6 +112,7 @@ const Post = () => {
       onValue(rf, (snapshot) => {
         if (sessionStorage.getItem("oneTime") == "true"){
         const parser = new DOMParser();
+        document.getElementById('Loader').style.display = 'none'
           console.log(snapshot.child("content").val())
           sessionStorage.setItem("oneTime", "false")
           var contenter = parser.parseFromString(snapshot.child("content").val(), 'text/html');
@@ -181,6 +182,10 @@ const Post = () => {
     
     
     <main>
+
+<div className='Loader' id='Loader'>
+          <div class="spinner"></div>
+          </div>
       <div className='navbar topic'>
             <div className='logo'>Dysonos</div>
             <div className='nav-links'>

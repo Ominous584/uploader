@@ -66,6 +66,7 @@ get(mostViewedPosts).then((snapshot) => {
     console.log("title is ", snapshot.child("body").val())
     snapshot.forEach((childSnapshot) => {
       console.log("one title", childSnapshot.key)
+      document.getElementById("Loader").style.display = "none"
       console.log("one body", childSnapshot.child("body").val())
       const childKey = childSnapshot.key;
               const childData = childSnapshot.val();
@@ -472,7 +473,9 @@ export default function Home() {
     <main >
           <div id='progressbar'></div>
           <div id='scrollPath'></div>
-    
+          <div className='Loader' id='Loader'>
+          <div class="spinner"></div>
+          </div>
 
 
 

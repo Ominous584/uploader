@@ -15,7 +15,36 @@
   vertical-align: middle;
 }
 
+.Loader{
+  width: 120vw;
+  height: 100vw;
+  background-color: blue;
+  margin-top: -2vw;
+  margin-left: -2vw;
+  position: fixed;
+  z-index: 199;
+  margin-top: -20vw;
+  
+}
 
+.spinner{
+  width: 50px;
+  height: 50px;
+  border: 7px solid #fff;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spinner 0.7s linear infinite;
+  position: absolute;
+  top: 33vw;
+  left: 48vw;
+
+}
+@keyframes spinner{
+  from{}
+    to{
+      transform: rotate(360deg);
+    }
+}
 
 .home_topics_list_item:hover{
   transform: scale(1.1);
