@@ -8,6 +8,7 @@ import { getDatabase, ref, onValue, get, child, set } from "firebase/database";
 import { getStorage, uploadBytes, ref as Sref, getDownloadURL } from "firebase/storage";
 import { SlLike, SlDislike } from "react-icons/sl";
 import { RxDividerVertical } from "react-icons/rx";
+import { BiTrendingUp, BiSearchAlt2 } from "react-icons/bi";
 import { CiUser, CiSettings, CiLogout } from 'react-icons/ci';
 /*const Post = () => {
   const router = useRouter()
@@ -112,7 +113,7 @@ const Post = () => {
       onValue(rf, (snapshot) => {
         if (sessionStorage.getItem("oneTime") == "true"){
         const parser = new DOMParser();
-        document.getElementById('Loader').style.display = 'none'
+        document.getElementById('search_loader').style.display = 'none'
           console.log(snapshot.child("content").val())
           sessionStorage.setItem("oneTime", "false")
           var contenter = parser.parseFromString(snapshot.child("content").val(), 'text/html');
@@ -162,20 +163,32 @@ const Post = () => {
       }
     }
     if (typeof window !== "undefined") {
-    if  (localStorage.hasOwnProperty('name')) {
-      console.log('name exists')
-      document.getElementById('logol').style.display = 'none'
-      document.getElementById('logol1').style.display = 'none'
-      document.getElementById('imm').src = "https://ui-avatars.com/api/?name=" + localStorage.getItem("name") + "rounded=true&size=50"
-    } else {
-      console.log('name does not exist')
-      document.getElementById('imm').style.display = 'none'
-    }}
-    const [showMe, setShowMe] = useState(false);
-    function toggle(){
-      setShowMe(!showMe);
-    }
-  
+    
+      if  (localStorage.hasOwnProperty('name')) {
+        console.log('name exists')
+        document.getElementById('logol').style.display = 'none'
+        document.getElementById('logol1').style.display = 'none'
+        document.getElementById('imm').src = "https://ui-avatars.com/api/?name=" + localStorage.getItem("name") + "rounded=true&size=50/?background=ffffff"
+        document.getElementById('account_img').src = "https://ui-avatars.com/api/?name=" + localStorage.getItem("name") + "rounded=true&size=50/?background=ffffff"
+      } else {
+        console.log('name does not exist')
+        document.getElementById('imm').style.display = 'none'
+      }
+      document.getElementById("searchbar").addEventListener('keypress', function(e) {
+        if (e.key == "Enter"){
+          var search = document.getElementById("searchbar").value
+          window.open("/search" + "?name=" + search, '_self')
+        }
+      })
+      }
+
+      const [showMe, setShowMe] = useState(false);
+ 
+  function toggle(){
+    setShowMe(!showMe);
+    
+    document.getElementById('imm').style.display = 'none'
+  }
   
   return (
 
@@ -183,16 +196,18 @@ const Post = () => {
     
     <main>
 
-<div className='Loader' id='Loader'>
-          <div class="spinner"></div>
-          </div>
-      <div className='navbar topic'>
+<div id='progressbar'></div>
+          <div id='scrollPath'></div>
+ 
+          <div className='navbar' id='navbar'>
             <div className='logo'>Dysonos</div>
+            <div className='searchbar'>
+              <input type='text'id='searchbar' placeholder='Search'></input>
+              <button className='search_type'><BiSearchAlt2 /></button>
+            </div>
             <div className='nav-links'>
            
-              <Link href='articles' className='del safe'>Crowd articles</Link>
-              <Link href='#' className='del safe'>About</Link>
-              <Link href='#' className='del safe'>Contact</Link>
+              
               <Link href='login' className='del alt' id='logol' >Login</Link>
               <Link href='signup' className='del alt' id='logol1'>Sign up</Link>
               
@@ -200,7 +215,8 @@ const Post = () => {
             <div id='user' className='user'>
               <img className='shower' id='imm'></img>
               <div className='drop' >
-                <h1 id='abaca'></h1>
+                <div id='accounter'>
+                <img id='account_img' className='account_img'></img><h1 className='account_name' id='account_name'></h1></div>
                 <hr></hr>
                 <Link href='profile' className='droper'><CiUser  /> My profile</Link>
                 <hr></hr>
@@ -211,22 +227,22 @@ const Post = () => {
                 </div>         
               </div>
             <div className='hamburger'>
-              <button className='ham' onClick={toggle} style={{ RxWidth: '10vw', fontSize: '9vw', marginLeft: '55vw', marginBottom: '4vw', border: 'none', width: '13vw'}} ><RxHamburgerMenu  /></button>
+              <button className='ham' onClick={toggle}><RxHamburgerMenu  /></button>
             </div>
             <div className='menu' style={{ display: showMe ? "block" : "none" }}>
-              <div className='profo'>
-                <img className='shower2' id='imm2'></img>
-                <div className='nama'><h1 id='nama' ></h1></div>
-              </div>
-              
-              
               <Link href='editor' className='del1  safe'>Editor</Link>
-              
               <Link href='profile' className='del1 alt'>Profile</Link>
-              <Link href='about' className='del1 alt'>About</Link>
-              
+              <Link href='about' className='del1 alt'>About</Link>  
             </div>
           </div> 
+
+          <div className='search_loader' id='search_loader'>
+            <div className='search_loader_box'>
+                <div className='search_loader_box1'></div>
+                <div className='search_loader_box2'></div>
+                <div className='search_loader_box3'></div>
+            </div>
+          </div>
           <div id='post_content'></div>
           <div className='pid_shower'>
           <div className='post_content' id='post_content'></div>

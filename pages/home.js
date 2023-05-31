@@ -256,12 +256,10 @@ if (typeof window !== "undefined") {
       raa.id = "res"
       console.log('clicked')
       document.body.appendChild(raa)
-      var rf_pro = ref(db, "articles")
+      var rf_pro = ref(db, "Topics/Programming/")
       onValue(rf_pro, (snapshot) => {
         snapshot.forEach((childSnapshot) => {
-          var raa1 = childSnapshot.child('topic').val()
-          console.log(raa1)
-          if (raa1 == "Programming") {
+          
             const childKey = childSnapshot.key;
               const childData = childSnapshot.val();
 
@@ -337,7 +335,7 @@ if (typeof window !== "undefined") {
                 console.log('error')                
               }
           }
-        })
+        )
       })
     })
     document.getElementById("topic_machine").addEventListener('click', function() {
@@ -436,7 +434,6 @@ if (typeof window !== "undefined") {
       
  
 
-
 //Acount shower and stuff -----------------------------------------------------------------
 //----------------------------------------------------------Account-----------------------
 
@@ -516,18 +513,7 @@ export default function Home() {
             </div>
           </div> 
         <div className='homer_content'>
-        <div className='home_topics'>
-            <h1 className='home_topics_head'>Topics</h1>
-            <div className='home_topics_list'>
-                <button className='home_topics_list_item' id='topic_tech'><a href='topic/Technology' style={{color: "white", textDecoration: "none"}} className='home_topics_list_item_text'>Technology</a></button>
-                <button className='home_topics_list_item' id='topic_pro'><a href='topic/Programming' style={{color: "white", textDecoration: "none"}} className='home_topics_list_item_text'>Programming</a></button>
-                <button className='home_topics_list_item' id='topic_machine'><a href='topic/Machine learning' style={{color: "white", textDecoration: "none"}} className='home_topics_list_item_text'>Machine learning</a></button>
-                <button className='home_topics_list_item' id='topic_health'><a href='topic/Health' style={{color: "white", textDecoration: "none"}} className='home_topics_list_item_text'>Health</a></button>
-                <button className='home_topics_list_item' id='topic_sports'><a href='topic/Sports' style={{color: "white", textDecoration: "none"}} className='home_topics_list_item_text'>Sports</a></button>
-                <button className='home_topics_list_item' id='topic_events'><a href='topic/Events' style={{color: "white", textDecoration: "none"}} className='home_topics_list_item_text'>Events</a></button>
-                </div>
-        </div>
-
+        
         <h1 className='latest'>Latest</h1>
         <div className='aspects'>
           <h1 className='discohead'>Discover posts of your interest.</h1>

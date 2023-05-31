@@ -12,7 +12,7 @@ import { VscAccount } from "react-icons/vsc";
 import { CiLogout, CiSettings, CiUser } from "react-icons/ci";
 import { BsCardImage } from "react-icons/bs";
 import { FaBold, FaItalic, FaHeading } from "react-icons/fa";
-
+import { BiTrendingUp, BiSearchAlt2 } from "react-icons/bi";
 import  {initializeApp}  from 'firebase/app';
 import { getDatabase, ref, onValue, get, child, set } from "firebase/database";
 //import { getStorage, uploadBytes, ref as Sref, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-storage.js";
@@ -40,31 +40,26 @@ const storage = getStorage();
 let files_1
 if (typeof window !== "undefined") {
     window.addEventListener('DOMContentLoaded', (event) => {
-      document.getElementById("text0").addEventListener('keypress', function (e){
-        var a = this.selectionStart
-        console.log(a)
-        console.log(e.key)
-        if (a % 50 == 0){
-          if (e.key != 'Backspace'){
-          var el1 = this
-          el1.rows = el1.rows + 1
-          el1.style.height = "auto"
-          console.log("added")
-        }
-        
-      }
-      })
-      document.getElementById("text0").addEventListener('keypress', function (e){
-        if (e.key == 'Enter'){
-          var el = this;  
-    setTimeout(function(){
-      var fella = el.rows
-      el.rows = fella + 1
-      console.log(fella)
-      el.style.height = "auto"
-    },0)
-        }
-      })
+      if (typeof window !== 'undefined') {
+        document.getElementById("text0").addEventListener("keydown", function (e) {
+            console.log(e.code)
+            console.log(e.which)
+            if (document.getElementById("text0").selectionStart % document.getElementById("text0").cols == 0) {
+                if (e.code == "Backspace"){
+                    document.getElementById("text0").rows = document.getElementById("text0").rows - 1;
+                    console.log("back")
+                } else {
+                    var le = document.getElementById("text0").scrollHeight;
+                    document.getElementById("text0").style.height = "auto";
+                    console.log(e.key)
+                    document.getElementById("text0").rows = document.getElementById("text0").rows + 1;
+                    console.log(le);
+                    console.log("the cursor position is ", document.getElementById("text0").selectionStart);
+                    console.log("the max is " , document.getElementById("text0").scrollWidth);
+                    console.log("the width is ", document.getElementById("text0").cols);
+    }}})
+    }
+    
       
       
         var user = localStorage.getItem("name")
@@ -86,33 +81,26 @@ if (typeof window !== "undefined") {
             normal.placeholder = "Body..."
             normal.classList.add('editor_body')
             heading.classList.add('editor_heading')
+            normal.cols = 50
             document.getElementById("body_input").appendChild(heading)
-            normal.addEventListener('keypress', function (e){
-        var a = this.selectionStart
-        console.log(a)
-        console.log(e.key)
-        if (a % 50 == 0){
-          if (e.key != 'Backspace'){
-          var el1 = this
-          el1.rows = el1.rows + 1
-          el1.style.height = "auto"
-          console.log("added")
-        }
-        
-      }
-      })
-            normal.addEventListener('keypress', function (e){
-              if (e.key == 'Enter'){
-                var el = this;  
-          setTimeout(function(){
-            var fella = el.rows
-            el.rows = fella + 1
-            console.log(fella)
-            el.style.height = "auto"
-          },0)
-              }}
+            normal.addEventListener('keydown', function (e){
+              if (this.selectionStart % this.cols == 0) {
+                if (e.code == "Backspace"){
+                    this.rows = this.rows - 1;
+                    console.log("back")
+                } else {
+                    var le = this.scrollHeight;
+                    this.style.height = "auto";
+                    console.log(e.key)
+                    this.rows = this.rows + 1;
+                    console.log(le);
+                    console.log("the cursor position is ", this.selectionStart);
+                    console.log("the max is " , this.scrollWidth);
+                    console.log("the width is ", this.cols);
+    }}}
         );
             document.getElementById("body_input").appendChild(normal)
+            dialog2 = dialog2 + 1
             sessionStorage.setItem("dialog", dialog2)
             var rf_texter = ref(db, 'articles/' + document.getElementById("title").value);
             
@@ -143,31 +131,40 @@ if (typeof window !== "undefined") {
                     text_r.id = idea
                     text_r.classList.add('editor_body')
                     text_r.placeholder = "Body..."
-                    text_r.addEventListener('keypress', function (e){
-        var a = this.selectionStart
-        console.log(a)
-        console.log(e.key)
-        if (a % 50 == 0){
-          if (e.key != 'Backspace'){
-          var el1 = this
-          el1.rows = el1.rows + 1
-          el1.style.height = "auto"
-          console.log("added")
-        }
-        
-      }
+                    text_r.cols = 50
+                    text_r.addEventListener('keydown', function (e){
+                      if (this.selectionStart % this.cols == 0) {
+                        if (e.code == "Backspace"){
+                            this.rows = this.rows - 1;
+                            console.log("back")
+                        } else {
+                            var le = this.scrollHeight;
+                            this.style.height = "auto";
+                            console.log(e.key)
+                            this.rows = this.rows + 1;
+                            console.log(le);
+                            console.log("the cursor position is ", this.selectionStart);
+                            console.log("the max is " , this.scrollWidth);
+                            console.log("the width is ", this.cols);
+            }}
       })
-                    text_r.addEventListener('keypress', function (e){
-                      if (e.key == 'Enter'){
-                        var el = this;  
-                  setTimeout(function(){
-                    var fella = el.rows
-                    el.rows = fella + 1
-                    console.log(fella)
-                    el.style.height = "auto"
-                  },0)
-                      }}
-                );
+                    text_r.addEventListener('keydown', function (e){
+                      if (this.selectionStart % this.cols == 0) {
+                        if (e.code == "Backspace"){
+                            this.rows = this.rows - 1;
+                            console.log("back")
+                        } else {
+                            var le = this.scrollHeight;
+                            this.style.height = "auto";
+                            console.log(e.key)
+                            this.rows = this.rows + 1;
+                            console.log(le);
+                            console.log("the cursor position is ", this.selectionStart);
+                            console.log("the max is " , this.scrollWidth);
+                            console.log("the width is ", this.cols);
+            }}
+                      })
+                
                     document.getElementById("body_input").appendChild(text_r)
                     sessionStorage.setItem("dialog", dialog2)
                     var rf_texter = ref(db, 'articles/' + document.getElementById("title").value);
@@ -255,7 +252,6 @@ if (typeof window !== "undefined") {
         })
         
         
-        
         /*var stref = Sref(storage, "Article/posted/" + titles + "/" + "img" + ch + ".png")
         uploadBytes(stref, files[0]);*/
     })
@@ -301,27 +297,38 @@ export default function useArticles(){
     }
 
     if (typeof window !== "undefined") {
+    
       if  (localStorage.hasOwnProperty('name')) {
         console.log('name exists')
         document.getElementById('logol').style.display = 'none'
         document.getElementById('logol1').style.display = 'none'
-        document.getElementById('imm').src = "https://ui-avatars.com/api/?name=" + localStorage.getItem("name") + "rounded=true&size=50"
+        document.getElementById('imm').src = "https://ui-avatars.com/api/?name=" + localStorage.getItem("name") + "rounded=true&size=50/?background=ffffff"
+        document.getElementById('account_img').src = "https://ui-avatars.com/api/?name=" + localStorage.getItem("name") + "rounded=true&size=50/?background=ffffff"
       } else {
         console.log('name does not exist')
         document.getElementById('imm').style.display = 'none'
-      }}
+      }
+      document.getElementById("searchbar").addEventListener('keypress', function(e) {
+        if (e.key == "Enter"){
+          var search = document.getElementById("searchbar").value
+          window.open("search" + "?name=" + search, '_self')
+        }
+      })
+      }
       
     return (
 
         <main>
             
-            <div className='navbar navbar_editor'>
-            <div className='logo'>Dysonos</div>
+            <div className='navbar _not' id='navbar'>
+            <a href='/' className='logo'>Dysonos</a>
+            <div className='searchbar'>
+              <input type='text'id='searchbar' placeholder='Search'></input>
+              <button><BiSearchAlt2 /></button>
+            </div>
             <div className='nav-links'>
            
-              <Link href='articles' className='del safe'>Crowd articles</Link>
-              <Link href='/about' className='del safe'>About</Link>
-              <Link href='#' className='del safe'>Contact</Link>
+              
               <Link href='login' className='del alt' id='logol' >Login</Link>
               <Link href='signup' className='del alt' id='logol1'>Sign up</Link>
               
@@ -329,7 +336,8 @@ export default function useArticles(){
             <div id='user' className='user'>
               <img className='shower' id='imm'></img>
               <div className='drop' >
-                <h1 id='abaca'></h1>
+                <div id='accounter'>
+                <img id='account_img' className='account_img'></img><h1 className='account_name' id='account_name'></h1></div>
                 <hr></hr>
                 <Link href='profile' className='droper'><CiUser  /> My profile</Link>
                 <hr></hr>
@@ -343,14 +351,8 @@ export default function useArticles(){
               <button className='ham' onClick={toggle} style={{ RxWidth: '10vw', fontSize: '9vw', marginLeft: '55vw', marginBottom: '4vw', border: 'none', width: '13vw'}} ><RxHamburgerMenu  /></button>
             </div>
             <div className='menu' style={{ display: showMe ? "block" : "none" }}>
-              <div className='profo'>
-                <img className='shower2' id='imm2'></img>
-                <div className='nama'><h1 id='nama' ></h1></div>
-              </div>
-              
               
               <Link href='editor' className='del1  safe'>Editor</Link>
-              
               <Link href='profile' className='del1 alt'>Profile</Link>
               <Link href='about' className='del1 alt'>About</Link>
               
@@ -365,9 +367,9 @@ export default function useArticles(){
             </div>
             <div id='whole_text'>
               <img className='preview_img' id='previewed' src='/preview_img.png'></img>
-          <textarea cols="10" rows="1" id="title" class="editor_title" placeholder="Title..."></textarea>
+          <textarea cols="20" rows="1" id="title" class="editor_title" placeholder="Title..."></textarea>
           <div id='body_input'>
-          <textarea cols="10" rows="1" id="text0" class="editor_body"  placeholder="Body..."></textarea>
+          <textarea cols="50" rows="1" id="text0" class="editor_body"  placeholder="Body..."  style={{width: "auto", height: "auto"}}></textarea>
           </div>
           </div>
           <div className='topic_select' style={{ display: showMe ? "none" : "block"}}>

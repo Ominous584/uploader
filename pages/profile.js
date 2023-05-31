@@ -11,7 +11,7 @@ import { RxHamburgerMenu, RxWidth } from 'react-icons/rx';
 import { VscAccount } from "react-icons/vsc";
 import { CiLogout, CiSettings, CiUser } from "react-icons/ci";
 import { AiOutlineCloseCircle } from "react-icons/ai";
-
+import { BiTrendingUp, BiSearchAlt2 } from "react-icons/bi";
 import  {initializeApp}  from 'firebase/app';
 import { getDatabase, ref, onValue, get, child, set } from "firebase/database";
 //import { getStorage, uploadBytes, ref as Sref, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-storage.js";
@@ -72,7 +72,8 @@ if (typeof window !== 'undefined') {
         onValue(rf10, (snapshot) => {
             const childKey = snapshot.child("username").val();
             username = childKey
-            document.getElementById('profname').innerHTML = childKey
+            document.getElementById('profname').innerHTML = localStorage.getItem('name')
+            document.getElementById("search_loader").style.display = "none"
         })
 
         var rfpost = ref(db, "People/" + user + "/posts/list")
@@ -137,23 +138,46 @@ export default function useArticles(){
     function toggle(){
         setShowMe(!showMe);
     }
+
+    if (typeof window !== "undefined") {
+    
+      if  (localStorage.hasOwnProperty('name')) {
+        console.log('name exists')
+        document.getElementById('logol').style.display = 'none'
+        document.getElementById('logol1').style.display = 'none'
+        document.getElementById('imm').src = "https://ui-avatars.com/api/?name=" + localStorage.getItem("name") + "rounded=true&size=50/?background=ffffff"
+        document.getElementById('account_img').src = "https://ui-avatars.com/api/?name=" + localStorage.getItem("name") + "rounded=true&size=50/?background=ffffff"
+      } else {
+        console.log('name does not exist')
+        document.getElementById('imm').style.display = 'none'
+      }
+      document.getElementById("searchbar").addEventListener('keypress', function(e) {
+        if (e.key == "Enter"){
+          var search = document.getElementById("searchbar").value
+          window.open("search" + "?name=" + search, '_self')
+        }
+      })
+      }
     return (
         <main>
-            <div className='navbar'>
+            <div className='navbar _not' id='navbar'>
             <div className='logo'>Dysonos</div>
+            <div className='searchbar'>
+              <input type='text'id='searchbar' placeholder='Search'></input>
+              <button className='search_type'><BiSearchAlt2 /></button>
+            </div>
             <div className='nav-links'>
            
-              <Link href='articles' className='del safe'>Crowd articles</Link>
-              <Link href='#' className='del safe'>About</Link>
-              <Link href='#' className='del safe'>Contact</Link>
-              <Link href='login' className='del alt' id='logol'>Login</Link>
+              
+              <Link href='login' className='del alt' id='logol' >Login</Link>
               <Link href='signup' className='del alt' id='logol1'>Sign up</Link>
               
             </div>
             <div id='user' className='user'>
               <img className='shower' id='imm'></img>
               <div className='drop' >
-                <h1 id='abaca'></h1>
+                <div id='accounter'>
+                <img id='account_img' className='account_img'></img><h1 className='account_name' id='account_name'></h1></div>
                 <hr></hr>
                 <Link href='profile' className='droper'><CiUser  /> My profile</Link>
                 <hr></hr>
@@ -164,20 +188,20 @@ export default function useArticles(){
                 </div>         
               </div>
             <div className='hamburger'>
-              <button className='ham' onClick={toggle} style={{ RxWidth: '10vw', fontSize: '9vw', marginLeft: '55vw', marginBottom: '4vw', border: 'none', width: '13vw'}} ><RxHamburgerMenu  /></button>
+              <button className='ham' onClick={toggle}><RxHamburgerMenu  /></button>
             </div>
             <div className='menu' style={{ display: showMe ? "block" : "none" }}>
-              <div className='profo'>
-                <img className='shower2' id='imm2'></img>
-                <div className='nama'><h1 id='nama' ></h1></div>
-              </div>
-              
-              <Link href='articles' className='del1 safe'>Articles</Link>
-              <Link href='#' className='del1  safe'>About</Link>
-              <Link href='#' className='del1 safe'>Contact</Link>
-              <Link href='login' className='del1 alt'>Login</Link>
-              <Link href='signup' className='del1 alt'>Sign up</Link>
-              
+              <Link href='/' className='del1  safe'>Read</Link>
+              <Link href='editor' className='del1 alt'>Write</Link>
+              <Link href='profile' className='del1 alt'>Profile</Link>  
+            </div>
+          </div>
+
+          <div className='search_loader' id='search_loader'>
+            <div className='search_loader_box'>
+                <div className='search_loader_box1'></div>
+                <div className='search_loader_box2'></div>
+                <div className='search_loader_box3'></div>
             </div>
           </div>
 
