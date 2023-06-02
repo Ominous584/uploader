@@ -1331,11 +1331,11 @@ html {
   }
 
   .search_loader{
-    width: 100vw;
+    width: 150vw;
     height: 100vw;
     position: fixed;
-    top: 0;
-    left: 0;
+    top: 30vw;
+    left: 0vw;
     background-color: white;
     z-index: 100;
 
@@ -1344,7 +1344,7 @@ html {
   .search_loader_box1{
     position: fixed;
     top: 70vw;
-    left: 40vw;
+    left: 70vw;
     width: 10vw;
     height: 10vw;
   }
@@ -1352,7 +1352,7 @@ html {
   .search_loader_box2{
     position: fixed;
     top: 70vw;
-    left: 20vw;
+    left: 50vw;
     width: 10vw;
     height: 10vw;
   }
@@ -1360,7 +1360,7 @@ html {
   .search_loader_box3{
     position: fixed;
     top: 70vw;
-    left: 60vw;
+    left: 30vw;
     width: 10vw;
     height: 10vw;
   }
