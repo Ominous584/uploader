@@ -195,6 +195,8 @@ const Post = () => {
     
     
     <main>
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4569046164902655"
+     crossorigin="anonymous"></script>
 
 <div id='progressbar'></div>
           <div id='scrollPath'></div>
